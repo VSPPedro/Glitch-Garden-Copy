@@ -17,7 +17,11 @@ public class MusicManager : MonoBehaviour {
 		audioSource = gameObject.GetComponent<AudioSource> ();
 	}
 
-	/*void OnLevelWasLoaded(int level){
+	public void ChangeVolume(float volume) {
+		audioSource.volume = volume;
+	}
+
+	void OnLevelWasLoaded(int level){
 
 		AudioClip thisLevelMusic = levelMusicChangeArray [level];
 
@@ -26,7 +30,7 @@ public class MusicManager : MonoBehaviour {
 			audioSource.loop = true;
 			audioSource.Play ();
 		}
-	}*/
+	}
 
 	void OnEnable()
 	{
