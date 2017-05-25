@@ -17,7 +17,7 @@ public class Attacker : MonoBehaviour {
 	void Update () {
 		transform.Translate (Vector3.left * currentSpeed * Time.deltaTime);
 
-		if (currentTarget)
+		if (!currentTarget)
 			anim.SetBool ("isAttacking", false);
 	}
 

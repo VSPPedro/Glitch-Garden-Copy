@@ -22,7 +22,7 @@ public class Lizard : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D collider)
 	{
 		GameObject obj = collider.gameObject;
-
+		Debug.Log ("Opa, esbarrei!");
 		//Leave the method if not collding with defender
 		if (!obj.GetComponent<Defender> ()) 
 		{
