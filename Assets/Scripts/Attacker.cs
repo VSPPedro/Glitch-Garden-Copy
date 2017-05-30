@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Attacker : MonoBehaviour {
 
-	private GameObject currentTarget;
+	[Tooltip ("Average number of seconds between appearances")]
+	public float seenEverySeconds;
 	private float currentSpeed;
+	private GameObject currentTarget;
 	private Animator anim;
 
 	// Use this for initialization
