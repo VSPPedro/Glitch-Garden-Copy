@@ -29,6 +29,7 @@ public class Health : MonoBehaviour {
 
 	public void DestroyObject()
 	{
+		Debug.Log ("Eu, " + name + ", fui destruido! Meu hp: " + health);
 		Destroy (gameObject);
 	}
 }
