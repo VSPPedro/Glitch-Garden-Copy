@@ -23,9 +23,14 @@ public class DefenderSpawner : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		defenderPosition = SnapToGrid (CalculateWorldPointOfMouseClick ());
-		GameObject defender = Instantiate (Button.selectedDefender, defenderPosition, Quaternion.identity);
-		defender.transform.parent = defenderParent.transform;
+		if (Button.selectedDefender) {
+			defenderPosition = SnapToGrid (CalculateWorldPointOfMouseClick ());
+			GameObject defender = Instantiate (Button.selectedDefender, defenderPosition, Quaternion.identity);
+			defender.transform.parent = defenderParent.transform;
+		} else {
+			Debug.LogWarning ("Nenhum defensor foi selecionado!");
+		}
+
 	}
 
 	Vector2 CalculateWorldPointOfMouseClick ()
