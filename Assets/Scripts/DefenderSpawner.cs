@@ -10,10 +10,12 @@ public class DefenderSpawner : MonoBehaviour {
 
 	private Vector2 defenderPosition;
 	private GameObject defenderParent;
+	private StarDisplay starDisplay;
 
 	void Start()
 	{
 		defenderParent = GameObject.Find (DEFENDER_PARENT_NAME);
+		starDisplay = GameObject.FindObjectOfType<StarDisplay> ();
 
 		if (!defenderParent) 
 		{
@@ -25,8 +27,15 @@ public class DefenderSpawner : MonoBehaviour {
 	{
 		if (Button.selectedDefender) {
 			defenderPosition = SnapToGrid (CalculateWorldPointOfMouseClick ());
-			GameObject defender = Instantiate (Button.selectedDefender, defenderPosition, Quaternion.identity);
-			defender.transform.parent = defenderParent.transform;
+			GameObject defender = Button.selectedDefender;
+			int defenderCost = defender.GetComponent<Defender> ().starCost;
+
+			if (starDisplay.UseStars (defenderCost) == StarDisplay.Status.SUCCESS) {
+				GameObject newDefender = Instantiate (defender, defenderPosition, Quaternion.identity);
+				newDefender.transform.parent = defenderParent.transform;
+			} else {
+				Debug.Log ("Insufficient stars to spwan!");
+			}
 		} else {
 			Debug.LogWarning ("Nenhum defensor foi selecionado!");
 		}
