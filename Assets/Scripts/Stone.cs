@@ -4,5 +4,17 @@ using UnityEngine;
 
 public class Stone : MonoBehaviour {
 
-	//Just a tag
+	public Animator animator;
+
+	void Start(){
+		animator = GetComponent<Animator> ();
+	}
+
+	void OnTriggerStay2D (Collider2D collider)
+	{
+		Attacker attacker = collider.gameObject.GetComponent<Attacker> ();
+		if (attacker) {
+			animator.SetTrigger ("underAttack trigger");
+		}
+	}
 }
